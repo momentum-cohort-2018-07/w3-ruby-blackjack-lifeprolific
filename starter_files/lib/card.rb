@@ -38,6 +38,10 @@ class Card
   end
 
   def inspect
-    @rank + " of " + @suit
+    @rank.to_s + " of " + @suit.to_s
+  end
+
+  def to_s
+    @rank.to_s + " of " + @suit.to_s
   end
 end

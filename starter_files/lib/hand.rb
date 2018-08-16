@@ -40,4 +40,8 @@ class Hand
     end
     @hand_values
   end
+
+  def to_s
+    @cards * ', '
+  end
 end

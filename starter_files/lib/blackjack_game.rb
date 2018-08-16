@@ -7,13 +7,16 @@ class BlackjackGame
 
    def initialize
     puts "Blackjack, begin!"
-    player = Player.new(100)
+    @player = Player.new(100)
+    @deck = Deck.new
    end
 
    def new_round
-    deck = Deck.new.shuffle
-    player.hand = []
-    player.hand.add_card(deck.draw)
-    player.hand.add_card(deck.draw)
+    @deck = Deck.new
+    @deck.shuffle
+    @player.hand = Hand.new
+    @player.hand.add_card(@deck.draw)
+    @player.hand.add_card(@deck.draw)
+    puts @player.hand
    end
 end
