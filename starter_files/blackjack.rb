@@ -4,5 +4,9 @@ require_relative './lib/player'
 require_relative './lib/hand'
 require_relative './lib/card'
 
+puts "Hello and welcome to the game of blackjack! Let's begin."
 game = BlackjackGame.new
-game.new_round
+while game.player.bank > 0
+  game.new_round
+end
+puts "You have run out of money. Thank you for playing blackjack!"

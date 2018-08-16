@@ -5,8 +5,9 @@ require_relative 'card'
 
 class BlackjackGame
 
+  attr_reader :player
+
    def initialize
-    puts "Hello and welcome to the game of blackjack! Let's begin."
     @player = Player.new(100)
     @deck = Deck.new
    end
