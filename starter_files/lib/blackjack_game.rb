@@ -13,6 +13,7 @@ class BlackjackGame
    end
 
    def new_round
+    @player.hand.clear
     puts "You have $#{@player.bank} and bet $10."
     @player.bank -= 10
     puts "You now have $#{@player.bank}."
@@ -33,14 +34,18 @@ class BlackjackGame
 
     # loop until stay or bust
     while (hit && !bust)
+      puts "Your current hand: #{@player.hand}."
       hit = check_hit
+      if hit
+        deal_card(player)
+      end
     end
    end
 
    def check_hit
     # loop until you get a good answer and return
     while true
-      print "Please enter (h)it or (s)tay: "
+      puts "Please enter (h)it or (s)tay:"
       answer = gets.chomp.downcase
       if answer[0] == "h"
         return true
