@@ -1,3 +1,3 @@
-puts "TODO Implement the game of blackjack."
+require_relative './lib/blackjack_game'
 
-# Hint: for starters, read bin/blackjack.rb
+BlackjackGame.new
