@@ -40,7 +40,4 @@ class Hand
     end
     @hand_values
   end
-
-  def best_value
-  end
 end

@@ -36,4 +36,8 @@ class Card
   def ==(other_card)
     (@rank == other_card.rank) && (@suit == other_card.suit)
   end
+
+  def inspect
+    @rank + " of " + @suit
+  end
 end
