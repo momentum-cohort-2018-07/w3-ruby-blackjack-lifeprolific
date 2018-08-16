@@ -1,3 +1,4 @@
 require_relative './lib/blackjack_game'
 
-BlackjackGame.new
+game = BlackjackGame.new
+game.new_round
