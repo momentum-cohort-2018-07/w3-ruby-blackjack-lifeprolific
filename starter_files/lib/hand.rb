@@ -42,6 +42,6 @@ class Hand
   end
 
   def to_s
-    @cards * ', '
+    @cards.join(', ')
   end
 end

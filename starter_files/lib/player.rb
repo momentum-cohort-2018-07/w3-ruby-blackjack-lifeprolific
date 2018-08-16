@@ -5,7 +5,7 @@ class Player
   attr_accessor :hand, :bank
 
   def initialize(bank)
-    @hand
+    @hand = Hand.new
     @bank = bank
   end
 
