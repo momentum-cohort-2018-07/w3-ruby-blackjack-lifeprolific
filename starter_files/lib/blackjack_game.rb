@@ -26,4 +26,28 @@ class BlackjackGame
     player.hand.add_card(card)
     puts "The house deals you the #{card}."
    end
+
+   def play_hand
+    bust = false
+    hit = true
+
+    # loop until stay or bust
+    while (hit && !bust)
+      hit = check_hit
+    end
+   end
+
+   def check_hit
+    # loop until you get a good answer and return
+    while true
+      print "Please enter (h)it or (s)tay: "
+      answer = gets.chomp.downcase
+      if answer[0] == "h"
+        return true
+      elsif answer[0] == "s"
+        return false
+      end
+      puts "That is not a valid answer!"
+    end
+  end
 end
