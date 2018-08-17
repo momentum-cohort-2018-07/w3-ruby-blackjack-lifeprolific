@@ -45,6 +45,10 @@ class Hand
     @hand_values
   end
 
+  def valid_values
+    hand_values.find_all {|value| value < 22}
+  end
+
   def to_s
     @cards.join(', ')
   end
