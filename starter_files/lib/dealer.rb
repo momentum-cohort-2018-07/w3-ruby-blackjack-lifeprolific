@@ -1,6 +1,6 @@
 require_relative "hand"
 
-class Player
+class Dealer
 
   attr_accessor :hand
 

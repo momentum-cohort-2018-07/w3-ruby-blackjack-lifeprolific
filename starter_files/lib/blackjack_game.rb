@@ -2,6 +2,7 @@ require_relative 'deck'
 require_relative 'player'
 require_relative 'hand'
 require_relative 'card'
+require_relative 'dealer'
 
 class BlackjackGame
 
@@ -9,6 +10,7 @@ class BlackjackGame
 
   def initialize
     @player = Player.new(100)
+    @dealer = Dealer.new
     @deck = Deck.new
   end
 
@@ -29,8 +31,19 @@ class BlackjackGame
   end
 
   def play_hand
-    player_turn
-    house_turn
+    house_setup
+    if player_turn
+      house_turn
+      resolve_hands
+    end
+  end
+
+  def house_setup
+    card = @deck.draw
+    @dealer.hand.add_card(card)
+    puts "the house deals itself the #{card}"
+    @dealer.hand.add_card(@deck.draw)
+    puts "the house deals itself a card face-down"
   end
 
   def player_turn
@@ -40,6 +53,7 @@ class BlackjackGame
     while (hit && !bust)
       puts "Your current hand: #{@player.hand}."
       puts "Your hand's value: #{player.hand.valid_values}"
+      puts "The house's current hand: #{@dealer.hand.cards[0]}, face-down card"
       hit = check_hit
       if hit
         deal_card(player)
@@ -49,10 +63,15 @@ class BlackjackGame
         puts "You bust!"
       end
     end
+    !bust
   end
 
   def house_turn
     puts "house_turn"
+  end
+
+  def resolve_hands
+    puts "resolve_hands"
   end
 
   def check_hit
