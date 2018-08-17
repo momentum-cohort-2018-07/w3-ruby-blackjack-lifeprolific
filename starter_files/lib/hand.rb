@@ -49,6 +49,16 @@ class Hand
     hand_values.find_all {|value| value < 22}
   end
 
+  def score
+    if valid_values.length == 0
+      return "bust"
+    elsif @cards.length == 2 && valid_values.max == 21
+      return "blackjack"
+    else
+      return valid_values.max
+    end
+  end
+
   def to_s
     @cards.join(', ')
   end

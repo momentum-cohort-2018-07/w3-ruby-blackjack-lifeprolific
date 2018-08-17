@@ -33,6 +33,7 @@ class BlackjackGame
 
   def play_hand
     house_setup
+    ## review
     if player_turn
       house_turn
       resolve_hands
@@ -72,6 +73,7 @@ class BlackjackGame
     stay = !(@dealer.hand.valid_values.max < 17)
     puts "the house's hand: #{@dealer.hand}"
     puts "the house hand's value = #{@dealer.hand.valid_values}"
+    # ! A|B
     while (!bust) && (!stay)
       card = @deck.draw
       puts "the house hits, dealing itself the #{card}"
@@ -90,13 +92,16 @@ class BlackjackGame
   end
 
   def resolve_hands
-    player_score = resolve_score(@player)
-    dealer_score = resolve_score(@dealer)
+    player_score = @player.hand.score
+    dealer_score = @dealer.hand.score
     puts "Your hand's value: #{player_score}"
     puts "The house hand's value: #{dealer_score}"
     if player_score == "bust"
       puts "You lose."
     elsif dealer_score == "bust"
+      puts "You win $20!"
+      @player.bank = @player.bank + 20
+    elsif player_score == "blackjack"
       puts "You win $20!"
       @player.bank = @player.bank + 20
     elsif player_score > dealer_score
