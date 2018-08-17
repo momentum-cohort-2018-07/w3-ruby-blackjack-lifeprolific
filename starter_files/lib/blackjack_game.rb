@@ -52,6 +52,7 @@ class BlackjackGame
   end
 
   def house_turn
+    puts "house_turn"
   end
 
   def check_hit
