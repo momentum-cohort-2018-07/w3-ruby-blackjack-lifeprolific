@@ -33,8 +33,8 @@ class BlackjackGame
 
   def play_hand
     house_setup
-    ## review
-    if player_turn
+    player_turn
+    if @player.hand.score != "bust"
       house_turn
       resolve_hands
     end
@@ -104,6 +104,8 @@ class BlackjackGame
     elsif player_score == "blackjack"
       puts "You win $20!"
       @player.bank = @player.bank + 20
+    elsif dealer_score == "blackjack"
+      puts "You lose."
     elsif player_score > dealer_score
       puts "You win $20!"
       @player.bank = @player.bank + 20
